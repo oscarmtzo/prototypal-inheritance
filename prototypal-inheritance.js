@@ -65,3 +65,28 @@ function item (name, price ){
 
 let ball = new item('ball', 15)
 let apple = new item('fruit', 10)
+
+// --> What is inheritance ?
+// --> inheritance in an object is an object that gains  properties or behavoir of anotherobject
+function Animal (name, owner, sound){
+    this.name = name
+    this.owner = owner
+    this.sound = sound
+}
+// function dog (name, owner){
+//     this.name = name
+//     this.owner = owner
+//     this.sound = 'guau guau'
+//     this.humanRelation = 'love'
+// } 
+//--> there's a better way to inheritate properties from an object
+function dog (name, owner) {
+    Animal.call(this, name, owner)
+    this.sound = 'guau guau'
+    this.humanRelation = 'love'
+}
+dog.prototype = Object.create(Animal.prototype)
+let myAnimal = new Animal('ayra', 'josephine', '--')
+let myDog = new Animal('Skipper', 'Oscar', 'guau')
+
+console.log(dog.name)
